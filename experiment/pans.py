@@ -13,25 +13,12 @@ from sklearn.metrics import matthews_corrcoef
 from sklearn.metrics import  f1_score,precision_score,recall_score
 from sklearn.cross_validation import cross_val_score
 
-#a=pd.read_csv('AC.txt',sep='  ',names=np.arange(360))
-#print a.shape[0]
-#a['label']=1
-#a[3899:]['label']=0
-#a.to_csv('AC_human.csv',sep=',',index=False)
-#count=0
-#summ=0
-#for i in range(0,a['label'].shape[0]):
-#    if a.iloc[i]['label']==1:
-#        count=count+1
-#    else:
-#        summ=summ+1     
-#print ('p:'),count,('n:'),summ
-#print a
-#################################sample#################################################
+
+##################################################################################
 t=pd.read_csv('train.csv',sep=',')
-t=t.sample(frac=1)
+
 ti=pd.read_csv('test.csv',sep=',')
-ti=ti.sample(frac=1)
+
 
 alg=GradientBoostingClassifier(n_estimators=2200,max_depth=6,subsample=0.7,learning_rate=0.05)#parameter
 predictors=np.arange(694)
@@ -62,5 +49,5 @@ test_predictions[test_predictions!=y_test]=0
 ti['result']=test_predictions                                
 print ti['result']  
 ti=ti['result']
-ti.to_csv('false.csv',sep=',')   
+ti.to_csv('false2.csv',sep=',')   
   
